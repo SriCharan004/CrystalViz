@@ -46,3 +46,18 @@ if uploaded_file is not None:
             
             st.subheader("Extracted Text")
             st.text(text)
+
+# Gradio theme customization
+theme = gr.themes.Default(
+    primary_hue="blue",
+    font=[gr.themes.GoogleFont("Open Sans"), "Arial", "sans-serif"]
+)
+
+# Streamlit CSS (add to app.py)
+st.markdown("""
+<style>
+    .stApp { background-color: #f5f5f5; }
+    .stTextInput>div>div>input { background-color: white; }
+    .css-1d391kg { padding: 1rem; border-radius: 0.5rem; }
+</style>
+""", unsafe_allow_html=True)
