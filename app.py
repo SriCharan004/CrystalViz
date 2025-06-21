@@ -1,6 +1,7 @@
 import streamlit as st
 import cv2
 import pytesseract
+import numpy as np
 from transformers import pipeline
 
 st.set_page_config(page_title="AI Design Rater", layout="wide")
@@ -28,7 +29,7 @@ if uploaded_file is not None:
     with col2:
         with st.spinner("Analyzing design..."):
             # Process image
-            image = cv2.imdecode(np.frombuffer(uploaded_file.read(), cv2.IMREAD_COLOR)
+            image = cv2.imdecode(np.frombuffer(uploaded_file.read(), cv2.IMREAD_COLOR), cv2.IMREAD_COLOR)
             gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
             text = pytesseract.image_to_string(gray)
             
@@ -47,13 +48,7 @@ if uploaded_file is not None:
             st.subheader("Extracted Text")
             st.text(text)
 
-# Gradio theme customization
-theme = gr.themes.Default(
-    primary_hue="blue",
-    font=[gr.themes.GoogleFont("Open Sans"), "Arial", "sans-serif"]
-)
-
-# Streamlit CSS (add to app.py)
+# Streamlit CSS customization
 st.markdown("""
 <style>
     .stApp { background-color: #f5f5f5; }

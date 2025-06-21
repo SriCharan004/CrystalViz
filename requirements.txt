@@ -1,5 +1,11 @@
+streamlit
 opencv-python
 pytesseract
 layoutparser
 transformers
+numpy
+torch
+pillow
+pandas
+plotly
 gradio
